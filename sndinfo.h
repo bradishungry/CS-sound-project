@@ -20,9 +20,7 @@ public:
        cout << "sndgen - creates a sound with a basic attack, decay, sustain, release envelope" << endl;
     }
 };
+float calculateLength(int, int);
 void getInfo();
-void startCat();
-void startMix();
-void startGen();
 #endif //MAIN_H_
 

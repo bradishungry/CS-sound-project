@@ -1,4 +1,4 @@
-/* 
+/*
  * File:   filereader.h
  * Author: bboswell
  *
@@ -6,21 +6,19 @@
  */
 
 #ifndef FILEREADER_H
-#define	FILEREADER_H
+#define FILEREADER_H
 #include <iostream>
+#include <fstream>
 #include "help.h"
 
 using namespace std;
 
 class filereader : public help {
 public:
-    int samples;
-    int samprate;
     filereader();
-    filereader(string);
+    filereader(string, int *, int *, int *, int *, int **);
     virtual ~filereader();
     void readFile(string);
-    float calculateLength(int, int);
     virtual void fhelp() {
         cout << "This program gives out file information for a .cs229 or .wav file" << endl;
         cout << "enter a valid filename after the program name and it will return information from the file" << endl;
@@ -29,6 +27,8 @@ public:
 private:
 
 };
+
+void sampleGetter(ifstream &, int *);
 
 #endif	/* FILEREADER_H */
 

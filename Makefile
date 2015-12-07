@@ -1,10 +1,12 @@
-main: main.o filereader.o filewriter.o wav_reader.o util.o
-	clang++ -o main main.o filereader.o filewriter.o wav_reader.o util.o
+all: sndinfo sndcat
 
-main.o: main.cpp main.h filereader.h util.h wav_reader.h help.h
-	clang++ -c main.cpp
+sndinfo: sndinfo.o filereader.o filewriter.o wav_reader.o util.o
+	clang++ -o sndinfo sndinfo.o filereader.o filewriter.o wav_reader.o util.o
 
-filereader.o: filereader.cpp filereader.h main.h util.h help.h
+sndinfo.o: sndinfo.cpp sndinfo.h filereader.h util.h wav_reader.h help.h
+	clang++ -c sndinfo.cpp
+
+filereader.o: filereader.cpp filereader.h sndinfo.h util.h help.h
 	clang++ -c filereader.cpp
 
 filewriter.o: filewriter.cpp filewriter.h
@@ -15,6 +17,12 @@ wav_reader.o: wav_reader.cpp wav_reader.h
 
 util.o: util.cpp util.h
 	clang++ -c util.cpp
+
+sndcat: sndcat.o filereader.o filewriter.o wav_reader.o util.o
+	clang++ -o sndcat sndcat.o filereader.o filewriter.o wav_reader.o util.o
+
+sndcat.o: sndcat.cpp sndcat.h filereader.h
+	clang++ -c sndcat.cpp
 
 clean:
 	rm -f *.o

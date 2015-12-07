@@ -1,0 +1,2 @@
+reading from stdin: sndcat shouldn't read from stdin
+
